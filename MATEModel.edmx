@@ -1,0 +1,1410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MATEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COMPANY_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OWNER_ID" Type="int" Nullable="false" />
+          <Property Name="COMPANY_ID" Type="int" Nullable="false" />
+          <Property Name="CREATED_AT" Type="datetime" Nullable="false" />
+          <Property Name="DEADLINE" Type="datetime" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="CONTENT" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPANY_INFO">
+          <Key>
+            <PropertyRef Name="COMPID" />
+          </Key>
+          <Property Name="COMPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OPEN_ADRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="nvarchar" MaxLength="7" />
+          <Property Name="MAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="11" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="COMMERCIAL_TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OWNER_ID" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT_ID" Type="int" Nullable="false" />
+          <Property Name="CREATED_AT" Type="datetime" Nullable="false" />
+          <Property Name="DEADLINE" Type="datetime" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="CONTENT" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEPARTMENTS">
+          <Key>
+            <PropertyRef Name="DEPID" />
+          </Key>
+          <Property Name="DEPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMPREF" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT_NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DEPARTMENT_DEF" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONAL_TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+          </Key>
+          <Property Name="TASKID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERREF" Type="int" Nullable="false" />
+          <Property Name="TASK_TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLE_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+          </Key>
+          <Property Name="TASKID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEAM_TASK" Type="bit" Nullable="false" />
+          <Property Name="ASSIGNED_TEAM" Type="int" />
+          <Property Name="ASSIGNED_USER" Type="int" />
+          <Property Name="CREATED_BY" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="CREATED_AT" Type="datetime" Nullable="false" />
+          <Property Name="DEADLINE" Type="datetime" Nullable="false" />
+          <Property Name="MODIFIED_BY" Type="nvarchar" MaxLength="25" />
+          <Property Name="MODIFIED_AT" Type="datetime" />
+          <Property Name="TASK_TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+          <Property Name="STATUS_COMMENT" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESULT" Type="smallint" />
+          <Property Name="CLOSED_AT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TEAM_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OWNER_ID" Type="int" Nullable="false" />
+          <Property Name="TEAM_ID" Type="int" Nullable="false" />
+          <Property Name="CREATED_AT" Type="datetime" Nullable="false" />
+          <Property Name="DEADLINE" Type="datetime" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="CONTENT" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAM_MEMBERS">
+          <Key>
+            <PropertyRef Name="RELID" />
+          </Key>
+          <Property Name="RELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERREF" Type="int" Nullable="false" />
+          <Property Name="TEAMREF" Type="int" Nullable="false" />
+          <Property Name="ROLE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TEAMS">
+          <Key>
+            <PropertyRef Name="TEAMID" />
+          </Key>
+          <Property Name="TEAMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEPREF" Type="int" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEAM_NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERREF" Type="int" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="MAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="20" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="20" />
+          <Property Name="POSTAL_CODE" Type="nvarchar" MaxLength="7" />
+          <Property Name="OPEN_ADRESS" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USER_ROLES">
+          <Key>
+            <PropertyRef Name="RELID" />
+          </Key>
+          <Property Name="RELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLEREF" Type="int" Nullable="false" />
+          <Property Name="USERREF" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="PW_KEY" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IS_ADMIN" Type="bit" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MATE.dbo.VW_DEPARTMENTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_DEPARTMENTS">
+          <Key>
+            <PropertyRef Name="DEPID" />
+            <PropertyRef Name="COMPREF" />
+            <PropertyRef Name="DEPARTMENT_NAME" />
+            <PropertyRef Name="DEPARTMENT_DEF" />
+            <PropertyRef Name="TEAMID" />
+            <PropertyRef Name="TEAM_NAME" />
+          </Key>
+          <Property Name="DEPID" Type="int" Nullable="false" />
+          <Property Name="COMPREF" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT_NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DEPARTMENT_DEF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEAMID" Type="int" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEAM_NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MATE.dbo.VW_PERSONAL_TASKS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_PERSONAL_TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+            <PropertyRef Name="USERREF" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="TASK_TITLE" />
+            <PropertyRef Name="TASK_DESCRIPTION" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="TASKID" Type="int" Nullable="false" />
+          <Property Name="USERREF" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TASK_TITLE" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MATE.dbo.VW_ROLES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_ROLES">
+          <Key>
+            <PropertyRef Name="RELID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="ROLEID" />
+            <PropertyRef Name="ROLE_CODE" />
+            <PropertyRef Name="ROLE_NAME" />
+          </Key>
+          <Property Name="RELID" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ROLEID" Type="int" Nullable="false" />
+          <Property Name="ROLE_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MATE.dbo.VW_TEAMS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_TEAMS">
+          <Key>
+            <PropertyRef Name="TEAM_NAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="ROLE" />
+            <PropertyRef Name="TEAMID" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="DEPREF" />
+          </Key>
+          <Property Name="TEAM_NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="nvarchar" MaxLength="50" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ROLE" Type="int" Nullable="false" />
+          <Property Name="TEAMID" Type="int" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="DEPREF" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MATE.dbo.VW_USERS_DETAILED' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_USERS_DETAILED">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="IS_ADMIN" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="PHONE" />
+            <PropertyRef Name="MAIL" />
+          </Key>
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IS_ADMIN" Type="bit" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="MAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="20" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="20" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="20" />
+          <Property Name="POSTAL_CODE" Type="nvarchar" MaxLength="7" />
+          <Property Name="OPEN_ADRESS" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO">
+          <End Role="COMPANY_INFO" Type="Self.COMPANY_INFO" Multiplicity="1" />
+          <End Role="COMPANY_ANNOUNCEMENTS" Type="Self.COMPANY_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_INFO">
+              <PropertyRef Name="COMPID" />
+            </Principal>
+            <Dependent Role="COMPANY_ANNOUNCEMENTS">
+              <PropertyRef Name="COMPANY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="COMPANY_ANNOUNCEMENTS" Type="Self.COMPANY_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="COMPANY_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="1" />
+          <End Role="DEPARTMENT_ANNOUNCEMENTS" Type="Self.DEPARTMENT_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="DEPARTMENT_ANNOUNCEMENTS">
+              <PropertyRef Name="DEPARTMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENT_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="DEPARTMENT_ANNOUNCEMENTS" Type="Self.DEPARTMENT_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="DEPARTMENT_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENTS_COMPANY_INFO">
+          <End Role="COMPANY_INFO" Type="Self.COMPANY_INFO" Multiplicity="1" />
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_INFO">
+              <PropertyRef Name="COMPID" />
+            </Principal>
+            <Dependent Role="DEPARTMENTS">
+              <PropertyRef Name="COMPREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAL_TASKS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PERSONAL_TASKS" Type="Self.PERSONAL_TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PERSONAL_TASKS">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TASKS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="0..1" />
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TASKS">
+              <PropertyRef Name="ASSIGNED_TEAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TASKS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TASKS">
+              <PropertyRef Name="ASSIGNED_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_ANNOUNCEMENTS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="1" />
+          <End Role="TEAM_ANNOUNCEMENTS" Type="Self.TEAM_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TEAM_ANNOUNCEMENTS">
+              <PropertyRef Name="TEAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="TEAM_ANNOUNCEMENTS" Type="Self.TEAM_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TEAM_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_MEMBERS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="1" />
+          <End Role="TEAM_MEMBERS" Type="Self.TEAM_MEMBERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TEAM_MEMBERS">
+              <PropertyRef Name="TEAMREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_MEMBERS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="TEAM_MEMBERS" Type="Self.TEAM_MEMBERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TEAM_MEMBERS">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAMS_DEPARTMENTS">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="1" />
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="TEAMS">
+              <PropertyRef Name="DEPREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONTACT_INFO_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USER_CONTACT_INFO" Type="Self.USER_CONTACT_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="USER_CONTACT_INFO">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLES_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USER_ROLES" Type="Self.USER_ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USER_ROLES">
+              <PropertyRef Name="ROLEREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USER_ROLES" Type="Self.USER_ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="USER_ROLES">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MATEModelStoreContainer">
+          <EntitySet Name="COMPANY_ANNOUNCEMENTS" EntityType="Self.COMPANY_ANNOUNCEMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMPANY_INFO" EntityType="Self.COMPANY_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPARTMENT_ANNOUNCEMENTS" EntityType="Self.DEPARTMENT_ANNOUNCEMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONAL_TASKS" EntityType="Self.PERSONAL_TASKS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TASKS" EntityType="Self.TASKS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEAM_ANNOUNCEMENTS" EntityType="Self.TEAM_ANNOUNCEMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEAM_MEMBERS" EntityType="Self.TEAM_MEMBERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEAMS" EntityType="Self.TEAMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_CONTACT_INFO" EntityType="Self.USER_CONTACT_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_ROLES" EntityType="Self.USER_ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_DEPARTMENTS" EntityType="Self.VW_DEPARTMENTS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_DEPARTMENTS].[DEPID] AS [DEPID], 
+    [VW_DEPARTMENTS].[COMPREF] AS [COMPREF], 
+    [VW_DEPARTMENTS].[DEPARTMENT_NAME] AS [DEPARTMENT_NAME], 
+    [VW_DEPARTMENTS].[DEPARTMENT_DEF] AS [DEPARTMENT_DEF], 
+    [VW_DEPARTMENTS].[TEAMID] AS [TEAMID], 
+    [VW_DEPARTMENTS].[TEAM_DEF] AS [TEAM_DEF], 
+    [VW_DEPARTMENTS].[TEAM_NAME] AS [TEAM_NAME]
+    FROM [dbo].[VW_DEPARTMENTS] AS [VW_DEPARTMENTS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_PERSONAL_TASKS" EntityType="Self.VW_PERSONAL_TASKS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_PERSONAL_TASKS].[TASKID] AS [TASKID], 
+    [VW_PERSONAL_TASKS].[USERREF] AS [USERREF], 
+    [VW_PERSONAL_TASKS].[USERNAME] AS [USERNAME], 
+    [VW_PERSONAL_TASKS].[TASK_TITLE] AS [TASK_TITLE], 
+    [VW_PERSONAL_TASKS].[TASK_DESCRIPTION] AS [TASK_DESCRIPTION], 
+    [VW_PERSONAL_TASKS].[STATUS] AS [STATUS]
+    FROM [dbo].[VW_PERSONAL_TASKS] AS [VW_PERSONAL_TASKS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_ROLES" EntityType="Self.VW_ROLES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_ROLES].[RELID] AS [RELID], 
+    [VW_ROLES].[USERNAME] AS [USERNAME], 
+    [VW_ROLES].[ROLEID] AS [ROLEID], 
+    [VW_ROLES].[ROLE_CODE] AS [ROLE_CODE], 
+    [VW_ROLES].[ROLE_NAME] AS [ROLE_NAME]
+    FROM [dbo].[VW_ROLES] AS [VW_ROLES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_TEAMS" EntityType="Self.VW_TEAMS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_TEAMS].[TEAM_NAME] AS [TEAM_NAME], 
+    [VW_TEAMS].[TEAM_DEF] AS [TEAM_DEF], 
+    [VW_TEAMS].[USERNAME] AS [USERNAME], 
+    [VW_TEAMS].[NAME] AS [NAME], 
+    [VW_TEAMS].[SURNAME] AS [SURNAME], 
+    [VW_TEAMS].[ROLE] AS [ROLE], 
+    [VW_TEAMS].[TEAMID] AS [TEAMID], 
+    [VW_TEAMS].[USERID] AS [USERID], 
+    [VW_TEAMS].[DEPREF] AS [DEPREF]
+    FROM [dbo].[VW_TEAMS] AS [VW_TEAMS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VW_USERS_DETAILED" EntityType="Self.VW_USERS_DETAILED" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_USERS_DETAILED].[USERID] AS [USERID], 
+    [VW_USERS_DETAILED].[USERNAME] AS [USERNAME], 
+    [VW_USERS_DETAILED].[NAME] AS [NAME], 
+    [VW_USERS_DETAILED].[SURNAME] AS [SURNAME], 
+    [VW_USERS_DETAILED].[IS_ADMIN] AS [IS_ADMIN], 
+    [VW_USERS_DETAILED].[STATUS] AS [STATUS], 
+    [VW_USERS_DETAILED].[PHONE] AS [PHONE], 
+    [VW_USERS_DETAILED].[MAIL] AS [MAIL], 
+    [VW_USERS_DETAILED].[COUNTRY] AS [COUNTRY], 
+    [VW_USERS_DETAILED].[CITY] AS [CITY], 
+    [VW_USERS_DETAILED].[DISTRICT] AS [DISTRICT], 
+    [VW_USERS_DETAILED].[POSTAL_CODE] AS [POSTAL_CODE], 
+    [VW_USERS_DETAILED].[OPEN_ADRESS] AS [OPEN_ADRESS]
+    FROM [dbo].[VW_USERS_DETAILED] AS [VW_USERS_DETAILED]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO" Association="Self.FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO">
+            <End Role="COMPANY_INFO" EntitySet="COMPANY_INFO" />
+            <End Role="COMPANY_ANNOUNCEMENTS" EntitySet="COMPANY_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY_ANNOUNCEMENTS_USERS" Association="Self.FK_COMPANY_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="COMPANY_ANNOUNCEMENTS" EntitySet="COMPANY_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS" Association="Self.FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="DEPARTMENT_ANNOUNCEMENTS" EntitySet="DEPARTMENT_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENT_ANNOUNCEMENTS_USERS" Association="Self.FK_DEPARTMENT_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DEPARTMENT_ANNOUNCEMENTS" EntitySet="DEPARTMENT_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENTS_COMPANY_INFO" Association="Self.FK_DEPARTMENTS_COMPANY_INFO">
+            <End Role="COMPANY_INFO" EntitySet="COMPANY_INFO" />
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAL_TASKS_USERS" Association="Self.FK_PERSONAL_TASKS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PERSONAL_TASKS" EntitySet="PERSONAL_TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TASKS_TEAMS" Association="Self.FK_TASKS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TASKS" EntitySet="TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TASKS_USERS" Association="Self.FK_TASKS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TASKS" EntitySet="TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_ANNOUNCEMENTS_TEAMS" Association="Self.FK_TEAM_ANNOUNCEMENTS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TEAM_ANNOUNCEMENTS" EntitySet="TEAM_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_ANNOUNCEMENTS_USERS" Association="Self.FK_TEAM_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TEAM_ANNOUNCEMENTS" EntitySet="TEAM_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_MEMBERS_TEAMS" Association="Self.FK_TEAM_MEMBERS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TEAM_MEMBERS" EntitySet="TEAM_MEMBERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_MEMBERS_USERS" Association="Self.FK_TEAM_MEMBERS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TEAM_MEMBERS" EntitySet="TEAM_MEMBERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAMS_DEPARTMENTS" Association="Self.FK_TEAMS_DEPARTMENTS">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="TEAMS" EntitySet="TEAMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_CONTACT_INFO_USERS" Association="Self.FK_USER_CONTACT_INFO_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USER_CONTACT_INFO" EntitySet="USER_CONTACT_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES_ROLES" Association="Self.FK_USER_ROLES_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USER_ROLES" EntitySet="USER_ROLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES_USERS" Association="Self.FK_USER_ROLES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USER_ROLES" EntitySet="USER_ROLES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MATEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COMPANY_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OWNER_ID" Type="Int32" Nullable="false" />
+          <Property Name="COMPANY_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPANY_INFO" Relationship="Self.FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO" FromRole="COMPANY_ANNOUNCEMENTS" ToRole="COMPANY_INFO" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_COMPANY_ANNOUNCEMENTS_USERS" FromRole="COMPANY_ANNOUNCEMENTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="COMPANY_INFO">
+          <Key>
+            <PropertyRef Name="COMPID" />
+          </Key>
+          <Property Name="COMPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTRY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OPEN_ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COMMERCIAL_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COMPANY_ANNOUNCEMENTS" Relationship="Self.FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO" FromRole="COMPANY_INFO" ToRole="COMPANY_ANNOUNCEMENTS" />
+          <NavigationProperty Name="DEPARTMENTS" Relationship="Self.FK_DEPARTMENTS_COMPANY_INFO" FromRole="COMPANY_INFO" ToRole="DEPARTMENTS" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OWNER_ID" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DEPARTMENTS" Relationship="Self.FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS" FromRole="DEPARTMENT_ANNOUNCEMENTS" ToRole="DEPARTMENTS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_DEPARTMENT_ANNOUNCEMENTS_USERS" FromRole="DEPARTMENT_ANNOUNCEMENTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="DEPARTMENTS">
+          <Key>
+            <PropertyRef Name="DEPID" />
+          </Key>
+          <Property Name="DEPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMPREF" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEPARTMENT_DEF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="COMPANY_INFO" Relationship="Self.FK_DEPARTMENTS_COMPANY_INFO" FromRole="DEPARTMENTS" ToRole="COMPANY_INFO" />
+          <NavigationProperty Name="DEPARTMENT_ANNOUNCEMENTS" Relationship="Self.FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS" FromRole="DEPARTMENTS" ToRole="DEPARTMENT_ANNOUNCEMENTS" />
+          <NavigationProperty Name="TEAMS" Relationship="Self.FK_TEAMS_DEPARTMENTS" FromRole="DEPARTMENTS" ToRole="TEAMS" />
+        </EntityType>
+        <EntityType Name="PERSONAL_TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+          </Key>
+          <Property Name="TASKID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERREF" Type="Int32" Nullable="false" />
+          <Property Name="TASK_TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_PERSONAL_TASKS_USERS" FromRole="PERSONAL_TASKS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="USER_ROLES" Relationship="Self.FK_USER_ROLES_ROLES" FromRole="ROLES" ToRole="USER_ROLES" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+          </Key>
+          <Property Name="TASKID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEAM_TASK" Type="Boolean" Nullable="false" />
+          <Property Name="ASSIGNED_TEAM" Type="Int32" />
+          <Property Name="ASSIGNED_USER" Type="Int32" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFIED_AT" Type="DateTime" Precision="3" />
+          <Property Name="TASK_TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+          <Property Name="STATUS_COMMENT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESULT" Type="Int16" />
+          <Property Name="CLOSED_AT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TEAMS" Relationship="Self.FK_TASKS_TEAMS" FromRole="TASKS" ToRole="TEAMS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_TASKS_USERS" FromRole="TASKS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="TEAM_ANNOUNCEMENTS">
+          <Key>
+            <PropertyRef Name="ANNID" />
+          </Key>
+          <Property Name="ANNID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OWNER_ID" Type="Int32" Nullable="false" />
+          <Property Name="TEAM_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATED_AT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DEADLINE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TEAMS" Relationship="Self.FK_TEAM_ANNOUNCEMENTS_TEAMS" FromRole="TEAM_ANNOUNCEMENTS" ToRole="TEAMS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_TEAM_ANNOUNCEMENTS_USERS" FromRole="TEAM_ANNOUNCEMENTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="TEAM_MEMBERS">
+          <Key>
+            <PropertyRef Name="RELID" />
+          </Key>
+          <Property Name="RELID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERREF" Type="Int32" Nullable="false" />
+          <Property Name="TEAMREF" Type="Int32" Nullable="false" />
+          <Property Name="ROLE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TEAMS" Relationship="Self.FK_TEAM_MEMBERS_TEAMS" FromRole="TEAM_MEMBERS" ToRole="TEAMS" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_TEAM_MEMBERS_USERS" FromRole="TEAM_MEMBERS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="TEAMS">
+          <Key>
+            <PropertyRef Name="TEAMID" />
+          </Key>
+          <Property Name="TEAMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEPREF" Type="Int32" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEAM_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DEPARTMENTS" Relationship="Self.FK_TEAMS_DEPARTMENTS" FromRole="TEAMS" ToRole="DEPARTMENTS" />
+          <NavigationProperty Name="TASKS" Relationship="Self.FK_TASKS_TEAMS" FromRole="TEAMS" ToRole="TASKS" />
+          <NavigationProperty Name="TEAM_ANNOUNCEMENTS" Relationship="Self.FK_TEAM_ANNOUNCEMENTS_TEAMS" FromRole="TEAMS" ToRole="TEAM_ANNOUNCEMENTS" />
+          <NavigationProperty Name="TEAM_MEMBERS" Relationship="Self.FK_TEAM_MEMBERS_TEAMS" FromRole="TEAMS" ToRole="TEAM_MEMBERS" />
+        </EntityType>
+        <EntityType Name="USER_CONTACT_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERREF" Type="Int32" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CITY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="OPEN_ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_USER_CONTACT_INFO_USERS" FromRole="USER_CONTACT_INFO" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USER_ROLES">
+          <Key>
+            <PropertyRef Name="RELID" />
+          </Key>
+          <Property Name="RELID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLEREF" Type="Int32" Nullable="false" />
+          <Property Name="USERREF" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK_USER_ROLES_ROLES" FromRole="USER_ROLES" ToRole="ROLES" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK_USER_ROLES_USERS" FromRole="USER_ROLES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PW_KEY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IS_ADMIN" Type="Boolean" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="COMPANY_ANNOUNCEMENTS" Relationship="Self.FK_COMPANY_ANNOUNCEMENTS_USERS" FromRole="USERS" ToRole="COMPANY_ANNOUNCEMENTS" />
+          <NavigationProperty Name="DEPARTMENT_ANNOUNCEMENTS" Relationship="Self.FK_DEPARTMENT_ANNOUNCEMENTS_USERS" FromRole="USERS" ToRole="DEPARTMENT_ANNOUNCEMENTS" />
+          <NavigationProperty Name="PERSONAL_TASKS" Relationship="Self.FK_PERSONAL_TASKS_USERS" FromRole="USERS" ToRole="PERSONAL_TASKS" />
+          <NavigationProperty Name="TASKS" Relationship="Self.FK_TASKS_USERS" FromRole="USERS" ToRole="TASKS" />
+          <NavigationProperty Name="TEAM_ANNOUNCEMENTS" Relationship="Self.FK_TEAM_ANNOUNCEMENTS_USERS" FromRole="USERS" ToRole="TEAM_ANNOUNCEMENTS" />
+          <NavigationProperty Name="TEAM_MEMBERS" Relationship="Self.FK_TEAM_MEMBERS_USERS" FromRole="USERS" ToRole="TEAM_MEMBERS" />
+          <NavigationProperty Name="USER_CONTACT_INFO" Relationship="Self.FK_USER_CONTACT_INFO_USERS" FromRole="USERS" ToRole="USER_CONTACT_INFO" />
+          <NavigationProperty Name="USER_ROLES" Relationship="Self.FK_USER_ROLES_USERS" FromRole="USERS" ToRole="USER_ROLES" />
+        </EntityType>
+        <EntityType Name="VW_DEPARTMENTS">
+          <Key>
+            <PropertyRef Name="DEPID" />
+            <PropertyRef Name="COMPREF" />
+            <PropertyRef Name="DEPARTMENT_NAME" />
+            <PropertyRef Name="DEPARTMENT_DEF" />
+            <PropertyRef Name="TEAMID" />
+            <PropertyRef Name="TEAM_NAME" />
+          </Key>
+          <Property Name="DEPID" Type="Int32" Nullable="false" />
+          <Property Name="COMPREF" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEPARTMENT_DEF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEAMID" Type="Int32" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEAM_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_PERSONAL_TASKS">
+          <Key>
+            <PropertyRef Name="TASKID" />
+            <PropertyRef Name="USERREF" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="TASK_TITLE" />
+            <PropertyRef Name="TASK_DESCRIPTION" />
+            <PropertyRef Name="STATUS" />
+          </Key>
+          <Property Name="TASKID" Type="Int32" Nullable="false" />
+          <Property Name="USERREF" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_TITLE" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TASK_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_ROLES">
+          <Key>
+            <PropertyRef Name="RELID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="ROLEID" />
+            <PropertyRef Name="ROLE_CODE" />
+            <PropertyRef Name="ROLE_NAME" />
+          </Key>
+          <Property Name="RELID" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROLEID" Type="Int32" Nullable="false" />
+          <Property Name="ROLE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_TEAMS">
+          <Key>
+            <PropertyRef Name="TEAM_NAME" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="ROLE" />
+            <PropertyRef Name="TEAMID" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="DEPREF" />
+          </Key>
+          <Property Name="TEAM_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEAM_DEF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROLE" Type="Int32" Nullable="false" />
+          <Property Name="TEAMID" Type="Int32" Nullable="false" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="DEPREF" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VW_USERS_DETAILED">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="NAME" />
+            <PropertyRef Name="SURNAME" />
+            <PropertyRef Name="IS_ADMIN" />
+            <PropertyRef Name="STATUS" />
+            <PropertyRef Name="PHONE" />
+            <PropertyRef Name="MAIL" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IS_ADMIN" Type="Boolean" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CITY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRICT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="OPEN_ADRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO">
+          <End Role="COMPANY_INFO" Type="Self.COMPANY_INFO" Multiplicity="1" />
+          <End Role="COMPANY_ANNOUNCEMENTS" Type="Self.COMPANY_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_INFO">
+              <PropertyRef Name="COMPID" />
+            </Principal>
+            <Dependent Role="COMPANY_ANNOUNCEMENTS">
+              <PropertyRef Name="COMPANY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANY_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="COMPANY_ANNOUNCEMENTS" Type="Self.COMPANY_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="COMPANY_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENTS_COMPANY_INFO">
+          <End Role="COMPANY_INFO" Type="Self.COMPANY_INFO" Multiplicity="1" />
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPANY_INFO">
+              <PropertyRef Name="COMPID" />
+            </Principal>
+            <Dependent Role="DEPARTMENTS">
+              <PropertyRef Name="COMPREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="1" />
+          <End Role="DEPARTMENT_ANNOUNCEMENTS" Type="Self.DEPARTMENT_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="DEPARTMENT_ANNOUNCEMENTS">
+              <PropertyRef Name="DEPARTMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTMENT_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="DEPARTMENT_ANNOUNCEMENTS" Type="Self.DEPARTMENT_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="DEPARTMENT_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAMS_DEPARTMENTS">
+          <End Role="DEPARTMENTS" Type="Self.DEPARTMENTS" Multiplicity="1" />
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENTS">
+              <PropertyRef Name="DEPID" />
+            </Principal>
+            <Dependent Role="TEAMS">
+              <PropertyRef Name="DEPREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONAL_TASKS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PERSONAL_TASKS" Type="Self.PERSONAL_TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PERSONAL_TASKS">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLES_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USER_ROLES" Type="Self.USER_ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USER_ROLES">
+              <PropertyRef Name="ROLEREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TASKS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="0..1" />
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TASKS">
+              <PropertyRef Name="ASSIGNED_TEAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TASKS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="TASKS" Type="Self.TASKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TASKS">
+              <PropertyRef Name="ASSIGNED_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_ANNOUNCEMENTS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="1" />
+          <End Role="TEAM_ANNOUNCEMENTS" Type="Self.TEAM_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TEAM_ANNOUNCEMENTS">
+              <PropertyRef Name="TEAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_ANNOUNCEMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="TEAM_ANNOUNCEMENTS" Type="Self.TEAM_ANNOUNCEMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TEAM_ANNOUNCEMENTS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_MEMBERS_TEAMS">
+          <End Role="TEAMS" Type="Self.TEAMS" Multiplicity="1" />
+          <End Role="TEAM_MEMBERS" Type="Self.TEAM_MEMBERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TEAMS">
+              <PropertyRef Name="TEAMID" />
+            </Principal>
+            <Dependent Role="TEAM_MEMBERS">
+              <PropertyRef Name="TEAMREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TEAM_MEMBERS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="TEAM_MEMBERS" Type="Self.TEAM_MEMBERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="TEAM_MEMBERS">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_CONTACT_INFO_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USER_CONTACT_INFO" Type="Self.USER_CONTACT_INFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="USER_CONTACT_INFO">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_ROLES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="USER_ROLES" Type="Self.USER_ROLES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="USER_ROLES">
+              <PropertyRef Name="USERREF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MATEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COMPANY_ANNOUNCEMENTS" EntityType="Self.COMPANY_ANNOUNCEMENTS" />
+          <EntitySet Name="COMPANY_INFO" EntityType="Self.COMPANY_INFO" />
+          <EntitySet Name="DEPARTMENT_ANNOUNCEMENTS" EntityType="Self.DEPARTMENT_ANNOUNCEMENTS" />
+          <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" />
+          <EntitySet Name="PERSONAL_TASKS" EntityType="Self.PERSONAL_TASKS" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+          <EntitySet Name="TASKS" EntityType="Self.TASKS" />
+          <EntitySet Name="TEAM_ANNOUNCEMENTS" EntityType="Self.TEAM_ANNOUNCEMENTS" />
+          <EntitySet Name="TEAM_MEMBERS" EntityType="Self.TEAM_MEMBERS" />
+          <EntitySet Name="TEAMS" EntityType="Self.TEAMS" />
+          <EntitySet Name="USER_CONTACT_INFO" EntityType="Self.USER_CONTACT_INFO" />
+          <EntitySet Name="USER_ROLES" EntityType="Self.USER_ROLES" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" />
+          <EntitySet Name="VW_DEPARTMENTS" EntityType="Self.VW_DEPARTMENTS" />
+          <EntitySet Name="VW_PERSONAL_TASKS" EntityType="Self.VW_PERSONAL_TASKS" />
+          <EntitySet Name="VW_ROLES" EntityType="Self.VW_ROLES" />
+          <EntitySet Name="VW_TEAMS" EntityType="Self.VW_TEAMS" />
+          <EntitySet Name="VW_USERS_DETAILED" EntityType="Self.VW_USERS_DETAILED" />
+          <AssociationSet Name="FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO" Association="Self.FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO">
+            <End Role="COMPANY_INFO" EntitySet="COMPANY_INFO" />
+            <End Role="COMPANY_ANNOUNCEMENTS" EntitySet="COMPANY_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANY_ANNOUNCEMENTS_USERS" Association="Self.FK_COMPANY_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="COMPANY_ANNOUNCEMENTS" EntitySet="COMPANY_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENTS_COMPANY_INFO" Association="Self.FK_DEPARTMENTS_COMPANY_INFO">
+            <End Role="COMPANY_INFO" EntitySet="COMPANY_INFO" />
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS" Association="Self.FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="DEPARTMENT_ANNOUNCEMENTS" EntitySet="DEPARTMENT_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTMENT_ANNOUNCEMENTS_USERS" Association="Self.FK_DEPARTMENT_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DEPARTMENT_ANNOUNCEMENTS" EntitySet="DEPARTMENT_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAMS_DEPARTMENTS" Association="Self.FK_TEAMS_DEPARTMENTS">
+            <End Role="DEPARTMENTS" EntitySet="DEPARTMENTS" />
+            <End Role="TEAMS" EntitySet="TEAMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONAL_TASKS_USERS" Association="Self.FK_PERSONAL_TASKS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PERSONAL_TASKS" EntitySet="PERSONAL_TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES_ROLES" Association="Self.FK_USER_ROLES_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USER_ROLES" EntitySet="USER_ROLES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TASKS_TEAMS" Association="Self.FK_TASKS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TASKS" EntitySet="TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TASKS_USERS" Association="Self.FK_TASKS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TASKS" EntitySet="TASKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_ANNOUNCEMENTS_TEAMS" Association="Self.FK_TEAM_ANNOUNCEMENTS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TEAM_ANNOUNCEMENTS" EntitySet="TEAM_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_ANNOUNCEMENTS_USERS" Association="Self.FK_TEAM_ANNOUNCEMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TEAM_ANNOUNCEMENTS" EntitySet="TEAM_ANNOUNCEMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_MEMBERS_TEAMS" Association="Self.FK_TEAM_MEMBERS_TEAMS">
+            <End Role="TEAMS" EntitySet="TEAMS" />
+            <End Role="TEAM_MEMBERS" EntitySet="TEAM_MEMBERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TEAM_MEMBERS_USERS" Association="Self.FK_TEAM_MEMBERS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="TEAM_MEMBERS" EntitySet="TEAM_MEMBERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_CONTACT_INFO_USERS" Association="Self.FK_USER_CONTACT_INFO_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USER_CONTACT_INFO" EntitySet="USER_CONTACT_INFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ROLES_USERS" Association="Self.FK_USER_ROLES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USER_ROLES" EntitySet="USER_ROLES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MATEModelStoreContainer" CdmEntityContainer="MATEEntities">
+          <EntitySetMapping Name="COMPANY_ANNOUNCEMENTS">
+            <EntityTypeMapping TypeName="MATEModel.COMPANY_ANNOUNCEMENTS">
+              <MappingFragment StoreEntitySet="COMPANY_ANNOUNCEMENTS">
+                <ScalarProperty Name="ANNID" ColumnName="ANNID" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPANY_INFO">
+            <EntityTypeMapping TypeName="MATEModel.COMPANY_INFO">
+              <MappingFragment StoreEntitySet="COMPANY_INFO">
+                <ScalarProperty Name="COMPID" ColumnName="COMPID" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="OPEN_ADRESS" ColumnName="OPEN_ADRESS" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="COMMERCIAL_TITLE" ColumnName="COMMERCIAL_TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENT_ANNOUNCEMENTS">
+            <EntityTypeMapping TypeName="MATEModel.DEPARTMENT_ANNOUNCEMENTS">
+              <MappingFragment StoreEntitySet="DEPARTMENT_ANNOUNCEMENTS">
+                <ScalarProperty Name="ANNID" ColumnName="ANNID" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="DEPARTMENT_ID" ColumnName="DEPARTMENT_ID" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENTS">
+            <EntityTypeMapping TypeName="MATEModel.DEPARTMENTS">
+              <MappingFragment StoreEntitySet="DEPARTMENTS">
+                <ScalarProperty Name="DEPID" ColumnName="DEPID" />
+                <ScalarProperty Name="COMPREF" ColumnName="COMPREF" />
+                <ScalarProperty Name="DEPARTMENT_NAME" ColumnName="DEPARTMENT_NAME" />
+                <ScalarProperty Name="DEPARTMENT_DEF" ColumnName="DEPARTMENT_DEF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAL_TASKS">
+            <EntityTypeMapping TypeName="MATEModel.PERSONAL_TASKS">
+              <MappingFragment StoreEntitySet="PERSONAL_TASKS">
+                <ScalarProperty Name="TASKID" ColumnName="TASKID" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+                <ScalarProperty Name="TASK_TITLE" ColumnName="TASK_TITLE" />
+                <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK_DESCRIPTION" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="MATEModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="ROLE_CODE" ColumnName="ROLE_CODE" />
+                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKS">
+            <EntityTypeMapping TypeName="MATEModel.TASKS">
+              <MappingFragment StoreEntitySet="TASKS">
+                <ScalarProperty Name="TASKID" ColumnName="TASKID" />
+                <ScalarProperty Name="TEAM_TASK" ColumnName="TEAM_TASK" />
+                <ScalarProperty Name="ASSIGNED_TEAM" ColumnName="ASSIGNED_TEAM" />
+                <ScalarProperty Name="ASSIGNED_USER" ColumnName="ASSIGNED_USER" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_AT" ColumnName="MODIFIED_AT" />
+                <ScalarProperty Name="TASK_TITLE" ColumnName="TASK_TITLE" />
+                <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK_DESCRIPTION" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="STATUS_COMMENT" ColumnName="STATUS_COMMENT" />
+                <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+                <ScalarProperty Name="CLOSED_AT" ColumnName="CLOSED_AT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAM_ANNOUNCEMENTS">
+            <EntityTypeMapping TypeName="MATEModel.TEAM_ANNOUNCEMENTS">
+              <MappingFragment StoreEntitySet="TEAM_ANNOUNCEMENTS">
+                <ScalarProperty Name="ANNID" ColumnName="ANNID" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAM_MEMBERS">
+            <EntityTypeMapping TypeName="MATEModel.TEAM_MEMBERS">
+              <MappingFragment StoreEntitySet="TEAM_MEMBERS">
+                <ScalarProperty Name="RELID" ColumnName="RELID" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+                <ScalarProperty Name="TEAMREF" ColumnName="TEAMREF" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEAMS">
+            <EntityTypeMapping TypeName="MATEModel.TEAMS">
+              <MappingFragment StoreEntitySet="TEAMS">
+                <ScalarProperty Name="TEAMID" ColumnName="TEAMID" />
+                <ScalarProperty Name="DEPREF" ColumnName="DEPREF" />
+                <ScalarProperty Name="TEAM_DEF" ColumnName="TEAM_DEF" />
+                <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_CONTACT_INFO">
+            <EntityTypeMapping TypeName="MATEModel.USER_CONTACT_INFO">
+              <MappingFragment StoreEntitySet="USER_CONTACT_INFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="OPEN_ADRESS" ColumnName="OPEN_ADRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_ROLES">
+            <EntityTypeMapping TypeName="MATEModel.USER_ROLES">
+              <MappingFragment StoreEntitySet="USER_ROLES">
+                <ScalarProperty Name="RELID" ColumnName="RELID" />
+                <ScalarProperty Name="ROLEREF" ColumnName="ROLEREF" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="MATEModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PW_KEY" ColumnName="PW_KEY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_DEPARTMENTS">
+            <EntityTypeMapping TypeName="MATEModel.VW_DEPARTMENTS">
+              <MappingFragment StoreEntitySet="VW_DEPARTMENTS">
+                <ScalarProperty Name="DEPID" ColumnName="DEPID" />
+                <ScalarProperty Name="COMPREF" ColumnName="COMPREF" />
+                <ScalarProperty Name="DEPARTMENT_NAME" ColumnName="DEPARTMENT_NAME" />
+                <ScalarProperty Name="DEPARTMENT_DEF" ColumnName="DEPARTMENT_DEF" />
+                <ScalarProperty Name="TEAMID" ColumnName="TEAMID" />
+                <ScalarProperty Name="TEAM_DEF" ColumnName="TEAM_DEF" />
+                <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_PERSONAL_TASKS">
+            <EntityTypeMapping TypeName="MATEModel.VW_PERSONAL_TASKS">
+              <MappingFragment StoreEntitySet="VW_PERSONAL_TASKS">
+                <ScalarProperty Name="TASKID" ColumnName="TASKID" />
+                <ScalarProperty Name="USERREF" ColumnName="USERREF" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="TASK_TITLE" ColumnName="TASK_TITLE" />
+                <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK_DESCRIPTION" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_ROLES">
+            <EntityTypeMapping TypeName="MATEModel.VW_ROLES">
+              <MappingFragment StoreEntitySet="VW_ROLES">
+                <ScalarProperty Name="RELID" ColumnName="RELID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="ROLE_CODE" ColumnName="ROLE_CODE" />
+                <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_TEAMS">
+            <EntityTypeMapping TypeName="MATEModel.VW_TEAMS">
+              <MappingFragment StoreEntitySet="VW_TEAMS">
+                <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
+                <ScalarProperty Name="TEAM_DEF" ColumnName="TEAM_DEF" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="TEAMID" ColumnName="TEAMID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="DEPREF" ColumnName="DEPREF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_USERS_DETAILED">
+            <EntityTypeMapping TypeName="MATEModel.VW_USERS_DETAILED">
+              <MappingFragment StoreEntitySet="VW_USERS_DETAILED">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="OPEN_ADRESS" ColumnName="OPEN_ADRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

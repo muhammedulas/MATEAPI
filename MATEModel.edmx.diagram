@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0616fc8687e488eb615b5d88c705c21" Name="Diagram1">
+        <EntityTypeShape EntityType="MATEModel.COMPANY_ANNOUNCEMENTS" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.COMPANY_INFO" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.DEPARTMENT_ANNOUNCEMENTS" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.DEPARTMENTS" Width="1.5" PointX="1.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.PERSONAL_TASKS" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.ROLES" Width="1.5" PointX="6.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.TASKS" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.TEAM_ANNOUNCEMENTS" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.TEAM_MEMBERS" Width="1.5" PointX="6" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.TEAMS" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.USER_CONTACT_INFO" Width="1.5" PointX="3" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.USER_ROLES" Width="1.5" PointX="9" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.USERS" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.VW_DEPARTMENTS" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.VW_PERSONAL_TASKS" Width="1.5" PointX="3.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.VW_ROLES" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.VW_TEAMS" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MATEModel.VW_USERS_DETAILED" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="MATEModel.FK_COMPANY_ANNOUNCEMENTS_COMPANY_INFO" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_COMPANY_ANNOUNCEMENTS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_DEPARTMENTS_COMPANY_INFO" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_DEPARTMENT_ANNOUNCEMENTS_DEPARTMENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_DEPARTMENT_ANNOUNCEMENTS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TEAMS_DEPARTMENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_PERSONAL_TASKS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_USER_ROLES_ROLES" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TASKS_TEAMS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TASKS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TEAM_ANNOUNCEMENTS_TEAMS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TEAM_ANNOUNCEMENTS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TEAM_MEMBERS_TEAMS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_TEAM_MEMBERS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_USER_CONTACT_INFO_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MATEModel.FK_USER_ROLES_USERS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
