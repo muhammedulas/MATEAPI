@@ -1688,11 +1688,7 @@ namespace MATE.Controllers
             resp.message = "Güncelleme Başarılı.";
             return Ok(resp);
         }
-
         #endregion
-
-
-
         #endregion
 
     }
